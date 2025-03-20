@@ -1,0 +1,12 @@
+conda activate mmpose
+
+numpy==1.24.4
+
+https://mmcv.readthedocs.io/en/master/get_started/installation.html#install-mmcv-full
+mmdet==2.27.0
+mmpose==0.29.0
+
+
+pyinstaller --onefile --hidden-import=mmcv._ext annotate.py
+
+pyinstaller --onefile --add-data "C:\Users\admin\anaconda3\envs\mmpose\Lib\site-packages\mmcv\_ext.cp38-win_amd64.pyd:mmcv" annotate.py
