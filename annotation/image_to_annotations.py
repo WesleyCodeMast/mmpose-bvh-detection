@@ -275,8 +275,10 @@ def image_to_annotations(img_fn: str, out_dir: str) -> None:
         for c in range(3):
             white_background[:, :, c] = (1 - a) * white_background[:, :, c] + a * img[:, :, c]
     elif len(cv2.split(img)) == 3:
-        for c in range(3):
-            white_background[:, :, c] = img[:, :, c]
+        
+        img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+
+        white_background = img.copy()
     
     cv2.imwrite(str(outdir/'image_with_bg.png'), white_background)
 
